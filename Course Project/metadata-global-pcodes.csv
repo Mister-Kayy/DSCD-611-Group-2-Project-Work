@@ -1,0 +1,55 @@
+Field,Label,Value
+id,Dataset ID,cb963915-d7d1-4ffa-90dc-31277e24406f
+title,Title of Dataset,Global P-Code List
+name,Dataset URL,global-pcodes
+notes,Description,"CSV containing subnational p-codes, their corresponding administrative names, parent p-codes, and reference dates for the world (where available). These are constructed using the COD gazetteers. English names are used where available, followed by names written in Latin alphabets. Note that Indonesia admin4 is not included for now, as that data is contained in a second, non-standard gazetteer."
+dataset_source,Source,HDX
+organization,Contributor,HDX
+dataset_date,Reference Period,[2010-07-07T00:00:00 TO *]
+last_modified,Updated,2025-11-17T22:24:19.614519
+data_update_frequency,Expected Update Frequency,Every week
+groups,Location,World
+license_title,License,Creative Commons Attribution International (CC BY)
+methodology,Methodology,Other
+methodology_other,Define Methodology,Pulled from COD gazetteers
+caveats,Caveats/Comments,
+tags,Tags,"administrative boundaries-divisions, hxl"
+resource_1_created,Created,2023-04-20T19:36:02.055518
+resource_1_description,Description,"Table contains the 3-digit ISO code, admin level, p-code, administrative name, parent p-code, and date."
+resource_1_format,File Format,CSV
+resource_1_download_url,Download URL,https://data.humdata.org/dataset/cb963915-d7d1-4ffa-90dc-31277e24406f/resource/793e66fe-4cdb-4076-b037-fb8c053239e2/download/global_pcodes.csv
+resource_1_id,Resource ID,793e66fe-4cdb-4076-b037-fb8c053239e2
+resource_1_last_modified,Updated,2025-11-17T22:24:16.368687
+resource_1_metadata_modified,Metadata Updated,2025-11-17T22:24:18.526354
+resource_1_microdata,Microdata,False
+resource_1_dataset_id,Dataset ID,cb963915-d7d1-4ffa-90dc-31277e24406f
+resource_1_resource_type,Resource Type,file.upload
+resource_1_name,Resource Name,global_pcodes.csv
+resource_1_mimetype,MIME Type,text/csv
+resource_1_size,Size,10.0M
+resource_2_created,Created,2023-09-01T15:38:09.384187
+resource_2_description,Description,"Data for admin levels 1 and 2. Table contains the 3-digit ISO code, admin level, p-code, administrative name, parent p-code, and date."
+resource_2_format,File Format,CSV
+resource_2_download_url,Download URL,https://data.humdata.org/dataset/cb963915-d7d1-4ffa-90dc-31277e24406f/resource/f65bc260-4d8b-416f-ac07-f2433b4d5142/download/global_pcodes_adm_1_2.csv
+resource_2_id,Resource ID,f65bc260-4d8b-416f-ac07-f2433b4d5142
+resource_2_last_modified,Updated,2025-11-17T22:24:18.434125
+resource_2_metadata_modified,Metadata Updated,2025-11-17T22:24:19.721167
+resource_2_microdata,Microdata,False
+resource_2_dataset_id,Dataset ID,cb963915-d7d1-4ffa-90dc-31277e24406f
+resource_2_resource_type,Resource Type,file.upload
+resource_2_name,Resource Name,global_pcodes_adm_1_2.csv
+resource_2_mimetype,MIME Type,text/csv
+resource_2_size,Size,1.4M
+resource_3_created,Created,2023-10-30T19:05:46.215351
+resource_3_description,Description,"P-code lengths for all countries at all levels. Table contains the 2 or 3 digit ISO code present in the p-codes, and p-code lengths."
+resource_3_format,File Format,CSV
+resource_3_download_url,Download URL,https://data.humdata.org/dataset/cb963915-d7d1-4ffa-90dc-31277e24406f/resource/f1161807-dab4-4331-b7b0-4e5dac56e0e4/download/global_pcode_lengths.csv
+resource_3_id,Resource ID,f1161807-dab4-4331-b7b0-4e5dac56e0e4
+resource_3_last_modified,Updated,2025-11-17T22:24:19.614519
+resource_3_metadata_modified,Metadata Updated,2025-11-17T22:24:19.721261
+resource_3_microdata,Microdata,False
+resource_3_dataset_id,Dataset ID,cb963915-d7d1-4ffa-90dc-31277e24406f
+resource_3_resource_type,Resource Type,file.upload
+resource_3_name,Resource Name,global_pcode_lengths.csv
+resource_3_mimetype,MIME Type,text/csv
+resource_3_size,Size,2.4K
