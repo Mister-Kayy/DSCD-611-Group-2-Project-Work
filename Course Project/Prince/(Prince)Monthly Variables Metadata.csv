@@ -1,0 +1,17 @@
+Variable Name,Data Type,Units,Description,Source/Calculation,Typical Range,Missing Data Handling
+PCODE,String,N/A,"Administrative unit code (e.g., GH0707) uniquely identifying geographic region",Inherited from dekadal data,GH01 to GH1609 (276 units),No missing values expected
+Municipality,String,N/A,"Administrative municipality name (e.g., Greater Accra, Ashanti)",Inherited from dekadal data,"Ghana, Ashanti, Greater Accra, Oti, etc.",No missing values expected
+date,DateTime,YYYY-MM-01,Month-start date for the aggregation period (aligned to 1st of month),Resampling index (month start),1981-01-01 to 2025-11-01,No missing values (aligned to month start)
+monthly_total_rfh,Float,mm,Cumulative rainfall over the entire month (sum of 3 dekads),SUM(rfh) aggregated monthly per PCODE,0 to ~800 mm,"NaN if source rfh data unavailable, handled using the mean"
+monthly_max_rfh,Float,mm,Maximum 10-day rainfall peak within the month,MAX(rfh) aggregated monthly per PCODE,0 to ~350 mm,"NaN if source rfh data unavailable, handled using the mean"
+monthly_avg_rfq,Float,%,Average rainfall anomaly for the month (deviation from long-term average),MEAN(rfq) aggregated monthly per PCODE,-100 to +600 %,"NaN if source rfh data unavailable, handled using the mean"
+num_wet_dekads,Integer,count,Count of dekads with measurable rainfall (rfh > 0); ranges 0 to 3,SUM(is_wet) where is_wet = (rfh > 0),0 to 3, 0 if no dekads recorded
+spi_3,Float,unitless,Standardized Precipitation Index at 3-month scale; captures drought/wetness,MEAN(spi3) aggregated monthly per PCODE,-3.0 to +3.0,"NaN if spi3 not calculated in source, handled using mean imputation"
+spi_6,Float,unitless,Standardized Precipitation Index at 6-month scale; captures drought/wetness,MEAN(spi6) aggregated monthly per PCODE,-3.0 to +3.0,"NaN if spi6 not calculated in source, handled using mean or median imputation"
+year,Integer,YYYY,Calendar year of the observation for temporal stratification,FIRST(year) per month (constant per year),1981 to 2025,No missing values (constant per year)
+return_2yr,Float,mm,2-year return period rainfall threshold computed via Gumbel distribution,FIRST(return_2yr) per month (Gumbel fitted to annual maxima),~50 to 90 mm,"NaN if return periods not computed, handled using the mean"
+return_5yr,Float,mm,5-year return period rainfall threshold computed via Gumbel distribution,FIRST(return_5yr) per month (Gumbel fitted to annual maxima),~35 to 65 mm,"NaN if return periods not computed, handled using the mean"
+return_10yr,Float,mm,10-year return period rainfall threshold computed via Gumbel distribution,FIRST(return_10yr) per month (Gumbel fitted to annual maxima),~25 to 45 mm,"NaN if return periods not computed, handled using the mean"
+exceeds_2yr,Integer,binary,"Binary flag: 1 if monthly_max_rfh exceeds 2-year return period, 0 otherwise",MAX(exceeds_2yr) aggregated monthly; 1 if any dekad exceeds,0 or 1,No missing values as periods have been computed
+exceeds_5yr,Integer,binary,"Binary flag: 1 if monthly_max_rfh exceeds 5-year return period, 0 otherwise",MAX(exceeds_5yr) aggregated monthly; 1 if any dekad exceeds,0 or 1,No missing values as periods have been computed
+exceeds_10yr,Integer,binary,"Binary flag: 1 if monthly_max_rfh exceeds 10-year return period, 0 otherwise",MAX(exceeds_10yr) aggregated monthly; 1 if any dekad exceeds,0 or 1,No missing values as periods have been computed
