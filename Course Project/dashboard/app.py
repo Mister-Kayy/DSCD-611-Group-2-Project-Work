@@ -14,7 +14,6 @@ st.sidebar.markdown(
     "- ℹ️ About: Methodology and dataset info"
 )
 
-st.image("assets/app.png", width=12000)
 
 page_bg_img = """
 <style>
