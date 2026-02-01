@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 st.set_page_config(page_title="Rainfall Forecast", layout="wide")
-st.title("📈 Rainfall Forecast & Anomaly Analysis")
+st.title("📈 Rainfall Forecast & Anomaly Analysis – Greater Accra")
 
 st.markdown("""
 This section visualizes rainfall anomalies over time for selected regions.
@@ -24,13 +24,22 @@ def load_rainfall_data():
 df = load_rainfall_data()
 
 # ------------------------------
-# SELECT REGION
+# SELECT REGION (Restricted to Greater Accra)
 # ------------------------------
 st.subheader("Select Region")
-regions = df['adm0_name'].unique()
-selected_region = st.selectbox("Region", regions)
 
-df_region = df[df['adm0_name'] == selected_region].sort_values('date')
+# Filter underlying data for Ghana
+target_country = "Ghana"
+if target_country in df['adm0_name'].unique():
+    df_region = df[df['adm0_name'] == target_country].sort_values('date')
+    # Display as Greater Accra
+    selected_region = st.selectbox("Region", ["Greater Accra"], disabled=True)
+    st.caption("Forecast based on national-level anomalies (Ghana) as proxy.")
+else:
+    # Fallback
+    st.error("Forecast data for Ghana not found.")
+    df_region = pd.DataFrame()
+    selected_region = "Unknown"
 
 # ------------------------------
 # SELECT VARIABLE
