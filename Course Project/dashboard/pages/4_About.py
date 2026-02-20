@@ -71,5 +71,9 @@ It does not replace official meteorological or emergency warnings.
 ---
 
 ### Developed by  
-**Group 2**
+**Group 2:**
+Etornam Agbetonyo
+Charles Ahorsu
+Kwame Atua-Ntow
+Prince Obeng Nkoah        
 """)

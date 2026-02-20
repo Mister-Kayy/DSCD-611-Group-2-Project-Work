@@ -8,6 +8,44 @@ import os
 # PAGE CONFIG
 # ------------------------------
 st.set_page_config(page_title="Historical Flood Analysis", layout="wide")
+page_bg_img = """
+<style>
+[data-testid="stAppViewContainer"] {
+background: linear-gradient(
+rgba(10,15,25,0.85),
+rgba(10,15,25,0.95)
+),
+url("assets/weather_bg.png");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+[data-testid="stSidebar"] {
+background-color: rgba(20,20,30,0.95);
+}
+
+h1, h2, h3 { color: #FFFFFF; }
+</style>
+"""
+
+glass_style = """
+<style>
+.block-container {
+    background-color: rgba(30, 35, 45, 0.75);  /* semi-transparent dark layer */
+    padding: 2rem;
+    border-radius: 15px;
+}
+.stMetric {
+    background-color: rgba(50, 55, 70, 0.7);
+    padding: 1rem;
+    border-radius: 10px;
+}
+</style>
+"""
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+st.markdown(glass_style, unsafe_allow_html=True)
 st.title("📜 Historical Flood Event Analysis")
 
 st.markdown("""
@@ -22,7 +60,12 @@ It tracks when rainfall surpassed the **2-year, 5-year, and 10-year** return per
 def load_historical_data():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     # Loading the provided dataset with SPI and Return Period info
-    csv_path = os.path.join(base_dir, "..", "GeoSpatial Numerical and Categorical Data (For Prince).csv")
+    csv_path = os.path.join(
+        base_dir,
+        "..",
+        "Prince", 
+        "GeoSpatial Numerical and Categorical Data (For Prince).csv"
+    )
     
     try:
         df = pd.read_csv(csv_path)
@@ -179,3 +222,33 @@ if not df_severe.empty:
     st.write("### ⚠️ Most Recent Significant Events")
     recent = df_severe.sort_values('date', ascending=False).head(5)
     st.table(recent[['date', 'Severity', 'monthly_max_rfh', 'monthly_total_rfh']])
+
+st.title("📜 Historical Flood Event Analysis")
+
+# Example: Rainfall trends per Municipality
+fig = px.line(
+    df,
+    x="date",
+    y="monthly_total_rfh",  # total rainfall
+    color="Municipality",
+    title="Rainfall Trends by Municipality",
+    template="plotly_dark"
+)
+
+st.plotly_chart(fig, use_container_width=True)
+
+municipalities = df['Municipality'].unique()
+selected_munis = st.multiselect("Select Municipalities", municipalities, default=municipalities)
+
+df_filtered = df[df['Municipality'].isin(selected_munis)]
+
+fig_filtered = px.line(
+    df_filtered,
+    x="date",
+    y="monthly_total_rfh",
+    color="Municipality",
+    title="Filtered Rainfall Trends",
+    template="plotly_dark"
+)
+
+st.plotly_chart(fig_filtered, use_container_width=True)
