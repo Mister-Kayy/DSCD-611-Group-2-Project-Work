@@ -1,5 +1,5 @@
 streamlit>=1.25
 pandas>=2.0
-plotly>=5.16
 numpy>=1.25
+plotly>=5.16
 openpyxl>=3.1
